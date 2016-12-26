@@ -30,10 +30,26 @@
                 });
             },
 
-            init: function() {
+            bb : function() { /* backbone的使用 */
+                require(["backbone"], function(Backbone) {
+                    var person = Backbone.Model.extend({
+                        defaults: {
+                            hello: "",
+                            text: "wonderful"
+                        }
+                    });
+                    var man = new person();
+                    man.set("hello", "hello world");
+                    $("#tip4").html(man.get("hello") + "<br/>" +
+                                    man.get("text") + "<br/>");
+                });
+            },
+
+            init: function() {/* 初始化 */
                 this.json();
                 this.max();
                 this.oddEven();
+                this.bb();
             }
         }
         $(function() {
